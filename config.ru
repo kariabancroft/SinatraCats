@@ -1,2 +1,2 @@
-require './cat-site'
-run CatSite
+require './dog-site'
+run DogSite
