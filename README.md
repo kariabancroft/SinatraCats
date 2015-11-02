@@ -1,1 +1,1 @@
-# SinatraCats
+# SinatraDogs
