@@ -1,0 +1,14 @@
+<form method="post">
+  <fieldset>
+    <legend>Dog Information</legend>
+    <label for="name">Dog name: </label>
+    <input type="text" id="name" name="name">
+
+    <label for="description">Dog description: </label>
+    <input type="text" id="description" name="description">
+
+    <input type="submit" name="submit" id="submit" value="New Dog">
+  </fieldset>
+</form>
+
+<p><%= @new_name if !@new_name.nil? %></p>

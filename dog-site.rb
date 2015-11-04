@@ -1,5 +1,6 @@
 require "sinatra"
 require "./lib/doggies"
+require "./lib/dogbase"
 
 class DogSite < Sinatra::Base
   get "/" do
@@ -10,6 +11,18 @@ class DogSite < Sinatra::Base
   get "/dog" do
     # This will match first against /dog
     erb "Dog string"
+  end
+
+  get "/new" do
+    erb :new
+  end
+
+  post "/new" do
+    @new_name = params[:name]
+    base = Doggies::Dogbase.new
+    base.create_schema
+    base.create_dog(@new_name, nil)
+    erb :new
   end
 
   get "/:dog_name" do
