@@ -1,6 +1,6 @@
 <h1>Dogs!</h1>
 <ul>
 <% @dogs.each do |dog| %>
-  <li><%= dog.name %></li>
+  <li><%= dog[0] %>: <%= dog[1] %></li>
 <% end %>
 </ul>

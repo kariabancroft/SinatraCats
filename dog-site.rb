@@ -3,8 +3,13 @@ require "./lib/doggies"
 require "./lib/dogbase"
 
 class DogSite < Sinatra::Base
+
+  def current_db
+    @curr_db ||= Doggies::Dogbase.new("doggies.db")
+  end
+
   get "/" do
-    @dogs = Doggies::Dog.all
+    @dogs = current_db.get_dogs
     erb :index
   end
 
@@ -19,9 +24,8 @@ class DogSite < Sinatra::Base
 
   post "/new" do
     @new_name = params[:name]
-    base = Doggies::Dogbase.new
-    base.create_schema
-    base.create_dog(@new_name, nil)
+    @descr = params[:description]
+    current_db.create_dog(@new_name, @descr)
     erb :new
   end
 
