@@ -1,6 +1,7 @@
 require "sinatra"
 require "./lib/doggies"
 require "./lib/dogbase"
+require "pry"
 
 class DogSite < Sinatra::Base
 
@@ -23,6 +24,7 @@ class DogSite < Sinatra::Base
   end
 
   post "/new" do
+    binding.pry
     @new_name = params[:name]
     @descr = params[:description]
     current_db.create_dog(@new_name, @descr)
